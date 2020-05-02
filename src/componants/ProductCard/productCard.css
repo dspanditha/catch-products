@@ -1,0 +1,59 @@
+.label-green {
+  background: #009900;
+  padding: 15px;
+}
+
+.label-red {
+  background: #cc3333;
+  padding: 15px;
+}
+
+.side-label {
+  color: white;
+  height: 50px;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.product-footer {
+  bottom: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  left: 0;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.card-container {
+  border: 1px solid #f2f2f2;
+  flex-direction: column;
+  padding: 5px;
+  position: relative;
+  text-align: center;
+}
+
+.price {
+  color: #333333;
+  font-size: 20px;
+  font-weight: bold;
+  padding-right: 5px;
+}
+
+.name-label {
+  font-size: 15px;
+  padding-left: 5px;
+  text-align: left;
+  width: 70%;
+}
+
+@media only screen and (min-width: 768px) {
+  .price {
+    font-size: 25px;
+  }
+
+  .name-label {
+    font-size: 18px;
+    width: 70%;
+  }
+}
