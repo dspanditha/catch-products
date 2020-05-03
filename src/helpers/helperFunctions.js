@@ -3,51 +3,34 @@ import axios from 'axios'
 import { ERROR_MESSAGE } from './constants'
 
 /**
- * filter products based on size
- * @param {*} productSize
- * @param {*} products
- */
-export const filterSizes = (productSize, products) => {
-  let updatedList = []
-  updatedList = products.filter(product => {
-    !product.size.some(sizes => sizes === productSize)
-      ? (product.filtered = false)
-      : (product.filtered = true)
-
-    return product
-  })
-  return updatedList
-}
-
-/**
  * filter products based on sale or exclusive
  * @param {*} isSale
  * @param {*} products
  */
-export const filterExclusiveAndSale = (isSale, products) => {
-  if (isSale)
-    return products.filter(product => {
-      !product.isSale ? (product.filtered = false) : (product.filtered = true)
-      return product
-    })
+export const filterByPrice = (isLow, products) => {
+  if (isLow) return products.sort((a, b) => a.salePrice - b.salePrice)
+  return products.sort((a, b) => b.salePrice - a.salePrice)
+}
 
-  return products.filter(product => {
-    !product.isExclusive
-      ? (product.filtered = false)
-      : (product.filtered = true)
+/**
+ * set all filter indexes
+ * @param {*} products
+ */
+export const setAllFilterIndex = products => {
+  return products.map((product, index) => {
+    product.filterIndex = index
     return product
   })
 }
 
 /**
- * set all filters to true
- * @param {*} products
+ * set product by original index
+ * @param {*} products 
  */
-export const setAllFiltersTrue = products => {
-  return products.map(product => {
-    product.filtered = true
-    return product
-  })
+export const setFilterbyIndex = products => {
+  console.log('products ', products)
+
+  return products.sort((a, b) => a.filterIndex - b.filterIndex)
 }
 
 /**
@@ -67,11 +50,20 @@ export const fetchApi = (url, setErrorProductList, setList, setPageData) => {
 
       console.log(result.data)
       setErrorProductList('')
-      setList(setAllFiltersTrue(result.data.results))
+      setList(setAllFilterIndex(result.data.results))
       setPageData(result.data.metadata)
     })
     .catch(error => {
       setErrorProductList(ERROR_MESSAGE)
       console.error(error)
     })
+}
+
+/**
+ * convert cents to dollars
+ * @param {*} amount
+ */
+export const convertToDollars = amount => {
+  const price = amount / 100
+  return '$' + price
 }

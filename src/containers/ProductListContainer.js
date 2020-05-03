@@ -18,7 +18,7 @@ const ProductListContainer = ({
   productList,
   setErrorProductList,
   setList,
-  setPageData,
+  setPageData
 }) => {
   const apiUrl =
     'http://catch-code-challenge.s3-website-ap-southeast-2.amazonaws.com/challenge-3/response.json'
@@ -27,8 +27,8 @@ const ProductListContainer = ({
     fetchApi(apiUrl, setErrorProductList, setList, setPageData)
   }, [setList])
 
+
   const productListComponent = productList
-    .filter(product => product.filtered)
     .map(item => <ProductCard details={item} key={item.id} />)
 
   const productFilterComponent = (

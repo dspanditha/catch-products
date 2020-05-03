@@ -6,40 +6,28 @@ import { updateList } from '../actions/productAction'
 
 import { ProductFilter } from '../componants/index'
 
-import {
-  filterExclusiveAndSale,
-  filterSizes,
-  setAllFiltersTrue
-} from '../helpers/helperFunctions'
+import { filterByPrice, setFilterbyIndex } from '../helpers/helperFunctions'
 
-const ProductFilterContainer = ({ sizesList, products, updateList }) => {
+const ProductFilterContainer = ({ products, updateList }) => {
   const handleChangeMainFilter = event => {
     let filteredList = []
 
     switch (event.target.value) {
-      case 'sale':
-        filteredList = filterExclusiveAndSale(true, products)
+      case 'low':
+        filteredList = filterByPrice(true, products)
         break
-      case 'exclusive':
-        filteredList = filterExclusiveAndSale(false, products)
+      case 'high':
+        filteredList = filterByPrice(false, products)
         break
       case 'all':
-        filteredList = setAllFiltersTrue(products)
-        break
-      default:
-        filteredList = filterSizes(event.target.value, products)
+        filteredList = setFilterbyIndex(products)
         break
     }
 
     updateList(filteredList)
   }
 
-  return (
-    <ProductFilter
-      handleChangeMainFilter={handleChangeMainFilter}
-      sizes={sizesList}
-    />
-  )
+  return <ProductFilter handleChangeMainFilter={handleChangeMainFilter} />
 }
 
 const mapStateToProps = state => state.productStore
