@@ -1,9 +1,10 @@
 .container-header {
-  background: #def1f4;
+  background: #eee;
   display: flex;
   flex-wrap: wrap;
   font-family: Arial, Helvetica, sans-serif;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  height: 60px;
   justify-content: space-between;
   max-width: 1250px;
   padding-left: 10px;
@@ -13,7 +14,7 @@
 .product-container {
   display: grid;
   font-family: Arial, Helvetica, sans-serif;
-  grid-gap: 0;
+  grid-gap: 10px;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   margin-top: 10px;
   margin: 0 auto;
@@ -37,7 +38,6 @@
 @media only screen and (max-width: 500px) {
   .container-header {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    height: 150px;
     max-width: 100%;
   }
 

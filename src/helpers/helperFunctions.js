@@ -25,13 +25,11 @@ export const setAllFilterIndex = products => {
 
 /**
  * set product by original index
- * @param {*} products 
+ * @param {*} products
  */
-export const setFilterbyIndex = products => {
-  console.log('products ', products)
+export const setFilterbyIndex = products => 
+  products.sort((a, b) => a.filterIndex - b.filterIndex)
 
-  return products.sort((a, b) => a.filterIndex - b.filterIndex)
-}
 
 /**
  * fetch api content & set products & errors
@@ -48,7 +46,6 @@ export const fetchApi = (url, setErrorProductList, setList, setPageData) => {
         throw new Error(`API ${apiUrl} is unavailable`)
       }
 
-      console.log(result.data)
       setErrorProductList('')
       setList(setAllFilterIndex(result.data.results))
       setPageData(result.data.metadata)

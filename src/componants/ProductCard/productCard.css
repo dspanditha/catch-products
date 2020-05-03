@@ -1,18 +1,16 @@
-.label-green {
-  background: #009900;
-  padding: 15px;
-}
-
 .label-red {
   background: #cc3333;
-  padding: 15px;
+  margin-left: auto;
+  padding: 5px;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .side-label {
   color: white;
-  height: 50px;
-  width: -moz-fit-content;
-  width: fit-content;
+  font-size: 10px;
+  font-weight: 700;
+  width: 100%;
 }
 
 .product-footer {
@@ -24,6 +22,10 @@
   left: 0;
   margin-top: 10px;
   width: 100%;
+}
+
+.product-footer span {
+  margin-bottom: 10px;
 }
 
 .card-container {
@@ -43,8 +45,8 @@
 
 .name-label {
   font-size: 15px;
-  width: 100%;
   text-align: center;
+  width: 100%;
 }
 
 @media only screen and (min-width: 768px) {

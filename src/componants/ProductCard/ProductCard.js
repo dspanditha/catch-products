@@ -8,7 +8,7 @@ const ProductCard = ({ details }) => (
   <div key={details.id} className='card-container'>
     <img src={details.imageUrl} />
     <div className='side-label'>
-      {!details.quantityAvailable && <div className='label-red'>SOLD OUT</div>}
+      {!details.quantityAvailable && <div className='label-red'>SOLD OUT </div>}
     </div>
     <div className='product-footer'>
       <span className='name-label'> {details.name}</span>
